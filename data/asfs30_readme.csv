@@ -1,0 +1,35 @@
+date_created: Fri Feb  3 13:23:16 2023
+title: MOSAiC flux group data product
+contact: Matthew Shupe, University of Colorado, matthew.shupe@colorado.edu
+institution: CIRES, University of Colorado and NOAA Physical Sciences Laboratory
+file_creator: Michael R. Gallagher; Christopher J. Cox
+creator_email: michael.r.gallagher@noaa.gov; christopher.j.cox@noaa.gov
+project: Thermodynamic and Dynamic Drivers of the Arctic Sea Ice Mass Budget at MOSAiC
+funding: Funding sources: National Science Foundation Award Number OPP1724551; NOAA Physical Science Laboratory and Arctic Research Program
+source: Observations made during the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC 2019-2020) expedition PS-122
+system: asfs30
+references: Cox, C. J., M. R. Gallagher, M. D. Shupe, P. O. G. Persson, A. Solomon, C. W. Fairall, T. Ayers, B. Blomquist I. M. Brooks, D. Costa, A. Grachev, D. Gottas, J. K. Hutchings, M. Kutchenreiter, J. Leach, S. M. Morris, V. Morris, J. Osborn, S. Pezoa, A. Preusser, L. D. Riihimaki, T. Uttal, 2022: Continuous observations of the surface energy budget and meteorology over the Arctic sea ice during MOSAiC. Scientific Data
+keywords: Polar, Arctic, Supersite, Observations, Flux, Atmosphere, MOSAiC
+conventions: cf convention variable naming as attribute whenever possible
+history: based on raw instrument data files
+version: 4.1, 2/1/2023
+quality_control: Significant quality control is in place for the observations used in the derived products. This Level 3 data is processed in many significant ways that improve upon prior data levels. This Level 3 data should be used unless you have a specific reason to use a lower level.
+qc_flags: -1 = No Data: Instrument was not functional and no data exists.
+0 = Good: High certainty that data is accurate to within the expected measurement uncertainty.
+1 = Caution: Use data with caution as there is reason to believe that the data might have a higher uncertainty than expected and/or is adversely impacted in some way.
+2 = Bad: Data is determined to be clearly erroneous (out of range, does not pass quality control, is adversely impacted in some way, etc). Data has been removed.
+3 = Engineering: Data collected was designed for engineering or testing purposes and not for general scientific use.  Data has been removed.
+wind_sector_qc_info_flag: Quality control flags specifically for wind sectors as related to derived turbulence products. This flag indicates if the prevailing wind direction is under the influence of certain obstacles on the sea ice.  The flags are defined as follows:
+- 10: In Polarstern sector (i.e. Caution)
+- 11: In Polarstern sector and in footprint (i.e., Bad)
+- 12: In Polarstern sector and above sig2/ustar threshold (i.e. Bad)
+- 20: In Met Hut sector (i.e. Caution)
+- 21: In Met Hut sector and in footprint (i.e., Bad)
+- 22: In Met Hut sector and above sig2/ustar threshold (i.e. Bad)
+- 30: In Tower sector (i.e. Caution)
+- 31: In Tower sector and in footprint (i.e., Bad)
+- 32: In Tower sector and above sig2/ustar threshold (i.e. Bad)
+- 40: Other issue
+data_provenance: Based on data from the mosseb.asfs30.level2.4.10min datastream with doi: https://doi.org/10.18739/A2K649V1F 
+turbulence_qc_flags: Applies to all derived EC-based turbulence parameters
+bulk_qc_flags: Applies to all derived bulk-based turbulence parameters
