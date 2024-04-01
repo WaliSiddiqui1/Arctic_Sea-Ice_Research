@@ -1,0 +1,3 @@
+The files in the folder "hourly_merged_buoy_data" have interpolated buoy positions, winds from the ERA5 reanalysis, and the depth from the International Bathymetric Chart of the Arctic Ocean. Processing details and code are provided in the supplemental materials for the paper "Evidence of abrupt transitions" by Watkins et al. https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2023GL103558 
+
+The interpolated_depths.nc file is a netcdf file with a downsampled version of the IBCAO bathymetry.
