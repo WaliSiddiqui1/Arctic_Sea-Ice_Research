@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
 from matplotlib.cm import ScalarMappable
 
+
+#Isolating the the data from the asfs30 file in into just the temperatures and dates
 data = pd.read_csv('/Users/saminakashif/Downloads/asfs30.csv')
 print(data.head())
 print(data.iloc[1])
@@ -28,12 +30,12 @@ newdata['datetime'] = pd.to_datetime(newdata['datetime'])
 
 newdata.set_index('datetime', inplace=True)
 
-
+#Taking the mean of the temperatures each day
 daily_average_temperature = newdata.resample('D').mean()
 
 print(daily_average_temperature)
 
-
+#Plotting the average daily temperature values against the date of each of day
 fig, ax = plt.subplots()
 
 norm = Normalize(vmin=daily_average_temperature.min(), vmax=daily_average_temperature.max())
