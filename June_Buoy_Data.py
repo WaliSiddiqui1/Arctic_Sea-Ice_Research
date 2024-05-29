@@ -12,6 +12,7 @@ from scipy.interpolate import interp1d
 import pyproj
 import xarray as xr
 
+#Isolating the temperature and buoy data for temperature and speed
 Buoy_data = pd.read_csv(r"/Users/saminakashif/Downloads/DN_buoy_list_v2.csv")
 print(Buoy_data.head())
 Temp_data = pd.read_csv(r'/Users/saminakashif/Downloads/L2archive.csv')
@@ -21,7 +22,7 @@ filtered_temp2 = Temp_data.iloc[1497:1592, columns_to_stay]
 
 print(filtered_temp2)
 pr = xr.open_dataset('/Users/saminakashif/Downloads/mosmet.asfs30.level3.4.1min.20200214.000000.nc')
-
+#Mapping all the files of the June data buoys to be accessed in the code
 file_mapping = {
     "2020E1.csv": "June_data_E1",
     "2020E2.csv": "June_data_E2",
@@ -58,6 +59,8 @@ file_mapping = {
 
 base_path = "/Users/saminakashif/Downloads/"
 
+"""Sorting the selected file so that it can source the data files for 
+just time between June 15th to June 30th in 2020 and creating it as a new csv"""
 for file_name, new_name in file_mapping.items():
     file_path = base_path + file_name
     df = pd.read_csv(file_path, index_col='datetime', parse_dates=True)
@@ -273,6 +276,8 @@ def calculate_flux(sea_ice_thickness, sea_ice_temperature, air_temperature, wind
   flux = thermal_conductivity * temperature_gradient * wind_speed
 
   return flux
+    
+"""Calculates the average flux of the collected buoy data based on the flux, temperature, and speed"""
 filtered_Temp = filtered_temp2.apply(pd.to_numeric, errors='coerce')
 print (filtered_temp2)
 sorted_data = sorted_data[:-(384-(384-95))]
