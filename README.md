@@ -1,4 +1,4 @@
-Space of coding to calculate fluxes and sea ice interaction data. The purpose of these files is to isolate tidal impacts vs weather impacts over time
+Space of coding to calculate fluxes and sea ice interaction data. The purpose of these files is to isolate tidal impacts vs weather impacts over time.
 
 What has been done so far is that we have looked closely at the velocity and speed profiles of buoys in the Arctic, especially in the summer months using the asfs30 data in conjunction with other buoy data. We see that wind speed plays a large role in ice velocity, though some models and numbers may be checked for complete accuracy. 
 
