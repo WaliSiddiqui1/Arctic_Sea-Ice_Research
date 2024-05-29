@@ -17,30 +17,32 @@ import xarray as xr
 Df = '/Users/saminakashif/Downloads/ocn_22m_current_preliminary.csv'
 data1 = pd.read_csv(Df)
 
+#Calculating the speed of the buoys based on the u_ice and and v_ice data
 data1['speed'] = (data1['u_ice'] ** 2 + data1['v_ice'] ** 2) ** 0.5
 data1 = data1.rename(columns = {'TIME': 'datetime'})
 print (data1)
 
+#Isolating the data in the csv files for just the longitude, latitude, time, and temp
 data2 = pd.read_csv('/Users/saminakashif/Downloads/asfs30.csv')
 selected_columns = data2[['datetime', 'latitude', 'longitude', 'temp']]
 selected_columns.to_csv("temp_space.csv", index=False)
 newdata2 = pd.read_csv("temp_space.csv")
-
 merged_data = pd.merge(data1, newdata2, on='datetime', how='inner')
-
 merged_data.to_csv("merged_data.csv", index=False)
-
 Data = pd.read_csv('merged_data.csv')
 print (Data)
 
+
 pplt.rc['reso'] = 'med'
 
+#Creating a map of the area surrounding the buoy data to map onto
 fig, ax = pplt.subplots(proj='ortho', proj_kw={'lon_0': -5, 'lat_0': 75}, width=5)
 ax.format(latlim=(70, 85), lonlim=(-25,10),  land=True,
           landcolor='light gray', latlabels=True, lonlabels=True)
 
 depth = xr.open_dataset('/Users/saminakashif/Downloads/interpolated_depth.nc')
 
+#Contouring the depths to show their differences in the map
 cbar = ax.contourf(depth.longitude,
                 depth.latitude,
                 depth.z, levels=[-4000, -3500, -3000, -2500,
@@ -49,16 +51,19 @@ cbar = ax.contourf(depth.longitude,
                 cmap='blues8_r',
                 extend='both')
 
+#Mapping the temperature gradients along the map using a cool-warm color format
 temp_gradient = ax.scatter(Data.longitude_y, #scatter plot not contour
                             Data.latitude_x,
                             c = Data.temp, #merge operation instead
                             cmap='coolwarm',
                             extend='both')
 
+'''Plotting the longitude and latitude pathways of the buoy along the map seperating the months of the buoy movement by color'''
 for buoy in Data.index:  
     ax.plot(Data.loc[buoy, 'longitude_y'], 
-            Data.loc[buoy, 'latitude_x'], color='gold', lw=1, alpha=0.75, zorder=2)       
+            Data.loc[buoy, 'latitude_x'], color='gold', lw=1, alpha=0.75, zorder=2) 
 
+#seperating the months of the buoy movement by color
 colors = {m: c['color'] for m, c in zip(['May', 'June', 'July', 'August', 'September'],
                                         pplt.Cycle('spectral', N=5))}
         
